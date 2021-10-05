@@ -1,8 +1,8 @@
 pipeline{
     agent any
     stages{
-        stage("testing"){
-            echo "starting"
+        stage("Build"){
+            echo "start the build"
         }
     }
 }
