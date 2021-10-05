@@ -16,31 +16,25 @@ pipeline {
             parallel {
                 stage ('Deploy To DEV') {
                     steps {
-                                
                                 // unstash 'getJars'
                                 // sh 'ls -lrt'
                                 sh 'mkdir -p ./dummy'
                                 unstash 'app'
                                 sh 'ls -lrt'
                                 sh 'echo "Deploy into Prod"'
-
                     }
                 }
-                
-                stage ('Deploy To UAT') {
+               stage ('Deploy To UAT') {
                     steps {
                                 sh 'echo "Deploy into Prod"'
-
                     }
                 }    
                 stage ('Deploy To Prod') {
                     steps {
                                 sh 'echo "Deploy into Prod"'
-
                     }
                 }
             }
-    }
-               
+    }              
 }
 }
