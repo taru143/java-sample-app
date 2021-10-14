@@ -1,1 +1,42 @@
-hii taru
+pipeline {
+    agent any
+    triggers {
+        cron('H/05 * * * *')
+    }
+    parameters {
+        string(defaultValue: "", description: 'This is a parameter', name: 'PARAMETER01')
+        choice(
+                name: 'choose_environment',
+                choices:"DEV\nUAT\nPRD",
+                description: "Choose Environment to trigger!"
+        )
+    }
+    stages {
+        
+        stage ("Build Source Code"){
+            steps {
+                echo "Building Source Code...."
+            }
+        }
+        stage ("Code Analysis"){
+            steps {
+                 echo "Building Code Analysis...."
+            }
+        }
+
+        stage ("Run Unit Test"){
+            steps {
+                echo "Running Unit Test Cases"
+            }
+        }
+        stage ("Deployment...."){
+          
+            steps {
+                echo "Deploying.....${params.PARAMETER01}"
+                echo "Deploying.....${params.choose_environment}"
+               
+            }
+        }
+      
+    }
+}
